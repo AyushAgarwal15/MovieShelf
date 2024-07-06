@@ -7,7 +7,7 @@ import { useKey } from "./hooks/useKey";
 const average = (arr) =>
   arr?.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-const KEY = "7804001d";
+const KEY = process.env.REACT_APP_IMDB_KEY;
 
 export default function App() {
   const [query, setQuery] = useState("");
