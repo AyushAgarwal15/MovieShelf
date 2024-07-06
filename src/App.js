@@ -64,7 +64,6 @@ export default function App() {
               <WatchedSummary watched={watched} />
               <WatchedMovieList
                 watched={watched}
-                onSelectMovie={handleSelectMovie}
                 onDeleteWatched={handleDeleteWatched}
               />
             </>
@@ -365,14 +364,13 @@ function WatchedSummary({ watched }) {
   );
 }
 
-function WatchedMovieList({ watched, onSelectMovie, onDeleteWatched }) {
+function WatchedMovieList({ watched, onDeleteWatched }) {
   return (
-    <ul className="list list-movies">
+    <ul className="list">
       {watched?.map((movie) => (
         <WatchedMovie
           movie={movie}
           key={movie.imdbID}
-          onSelectMovie={onSelectMovie}
           onDeleteWatched={onDeleteWatched}
         />
       ))}
@@ -380,9 +378,9 @@ function WatchedMovieList({ watched, onSelectMovie, onDeleteWatched }) {
   );
 }
 
-function WatchedMovie({ movie, onSelectMovie, onDeleteWatched }) {
+function WatchedMovie({ movie, onDeleteWatched }) {
   return (
-    <li onClick={() => onSelectMovie(movie.imdbID)}>
+    <li>
       <img src={movie.poster} alt={`${movie.title} poster`} />
       <h3>{movie.title}</h3>
       <div>
